@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Todoproject.Models.todolist>
+  @* main page view
+ reference - https://www.youtube.com/watch?v=jAET1F3zHIw *@
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>To Do List</h1>
+<p>
+    <a asp-action="Create">Add an Item</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Items </th>
+        
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Content
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
